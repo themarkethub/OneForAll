@@ -1,0 +1,128 @@
+
+<style>
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+ p { padding-left: 25px; }
+</style>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid"> 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a target="_blank" href="#" class="navbar-brand">Blackfox Studios</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Storypad learning tool</a></li>
+                <li class="active"><a href="/support/api/v1.0/support/profile/1" target="_blank">Workflow Management</a></li>
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">DropDown
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('house1') }}">House 1: X</a></li>
+                        <li><a href="#">House 2: X</a></li>
+                        <li><a href="#">House 3: X</a></li>
+                        <li><a href="#">House 4: X</a></li>
+                    </ul>
+                 </li>              
+             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong>User Pannel</strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <center><img src="{{login_user.image}}" width="82" height="86" title="White flower" alt="Flower">
+                                        </center>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        
+<p class="text-left small"><b>name:</b> {{login_user.name}}</p>
+
+
+
+ <p class="text-left small"><b>class:</b> {{login_user.class}}</p>
+
+<p class="text-left small"><b>email:</b>  {{login_user.email}}</p>
+
+
+<p class="text-left small"><b>title:</b>{{login_user.tittle}}</p>
+
+ <p class="text-left small"> <b>Current Workflow:</b>{{login_user.current_workflow}}</p>
+
+ <p class="text-left small"><b>Prevs Stage: </b> {{login_user.prv_stage}}</p>
+
+   <p class="text-left small">
+<b>Current Stage:</b> {{login_user.Stage}}</p>
+
+  <p class="text-left small"><b>Next Stage: </b>{{login_user.Next_stage}}</p>
+
+ <p class="text-left small"><b>Skills:</b>  {{login_user.skills}}</p>
+
+ <p class="text-left small"><b>House:</b> {{login_user.House}}</p>
+
+  <p class="text-left small"><b>sex:</b> {{login_user.sex}}</p>
+
+ <p class="text-left small"><b>Age:</b>  {{login_user.age}}</p>
+
+ <p class="text-left small"><b>Points:</b>  {{login_user.Points}}</p>
+
+  <p class="text-left small"><b>Lvl:</b> {{login_user.Lvl}}</p>
+
+
+
+<hr>
+                                        <p class="text-left small"><b>Research notes:</b> <a href="{{login_user.onenote}}">View Here</a>
+<br>
+<b>Research Github:</b> <a href="{{login_user.github}}">View Here</a></p>
+                                        
+                                            <a href="#" class="btn btn-primary btn-block btn" style="margin-left: 55px">Launch MMORPG Game</a>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="navbar-login navbar-login-session">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>
+                                            <a href="#" class="btn btn-danger btn-block">Launch AR Game</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

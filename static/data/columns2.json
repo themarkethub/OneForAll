@@ -1,0 +1,29 @@
+[
+  {
+    "field": "id", 
+    "title": "id"
+   
+  },
+  {
+    "field": "vertex",
+    "title": "vertex"
+ 
+  },
+  {
+    "field": "parent",
+    "title": "parent"
+  },
+  {
+    "field": "value",
+    "title": "value"
+  },
+  {
+    "field": "mxGeometry.x",
+    "title": "x"
+  },
+  {
+    "field": "mxGeometry.y",
+    "title": "y"
+  }
+
+]

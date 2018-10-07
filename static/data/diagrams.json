@@ -1,0 +1,149 @@
+[
+  {
+          "id": "2",
+          "vertex": "1",
+          "parent": "1",
+          "value": "[insert Step 1 here]",
+          "mxGeometry": {
+            "x": "300",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "id": "3",
+          "vertex": "1",
+          "parent": "1",
+         "value": "[insert Step 2 here]",
+          "mxGeometry": {
+            "x": "380",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "id": "4",
+          "vertex": "1",
+          "parent": "1",
+          "value": "[insert Step 3 here]",
+          "mxGeometry": {
+            "x": "380",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "id": "5",
+          "vertex": "1",
+          "parent": "1",
+          "value": "[insert Step 4 here]",
+          "mxGeometry": {
+            "x": "380",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "id": "6",
+          "vertex": "1",
+          "parent": "1",
+          "value": "[insert Step 5 here]",
+          "mxGeometry": {
+            "x": "380",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "id": "7",
+          "vertex": "1",
+          "parent": "1",
+          "value": "[insert Step 5 here]",
+          "mxGeometry": {
+            "x": "380",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "-id": "8",
+          "vertex": "1",
+          "parent": "1",
+          "value": "[insert Step 5 here]",
+          "mxGeometry": {
+            "x": "380",
+            "y": "0",
+            "width": "140",
+            "height": "30",
+            "as": "geometry"
+          }
+        },
+        {
+          "-id": "9",
+          "-edge": "1",
+          "-source": "3",
+          "-target": "4",
+          "-parent": "1",
+          "-value": "IF yes [action]to[actor]",
+          "mxGeometry": {
+            "-as": "geometry",
+            "Array": {
+              "-as": "points",
+              "Object": {
+                "-x": "260",
+                "-y": "120"
+              }
+            }
+          }
+        },
+        {
+          "-id": "10",
+          "-edge": "1",
+          "-source": "4",
+          "-target": "5",
+          "-parent": "1",
+          "-value": "IF yes [action]to[actor]",
+          "mxGeometry": {
+            "-as": "geometry",
+            "Array": {
+              "-as": "points",
+              "Object": {
+                "-x": "200",
+                "-y": "180"
+              }
+            }
+          }
+        },
+        {
+          "-id": "11",
+          "-edge": "1",
+          "-source": "4",
+          "-target": "6",
+          "-parent": "1",
+          "-value": "IF yes [action]to[actor]",
+          "mxGeometry": {
+            "-as": "geometry",
+            "-relative": "1",
+            "-y": "-10",
+            "Array": {
+              "-as": "points",
+              "Object": {
+                "-x": "460",
+                "-y": "155"
+              }
+       }  
+       }  
+     }
+]

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQM Complex Demo</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>    
+</head>
+<body>
+    <div data-role="page" id="index2">
+        <div data-theme="a" data-role="header">
+            <h3>
+                First Page
+            </h3>
+            <div data-role="navbar"></div>
+        </div>
+
+        <div data-role="content">
+
+        </div>
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+
+        </div>
+    </div> 
+    <div data-role="page" id="second">
+        <div data-theme="a" data-role="header">
+            <h3>
+                Second Page
+            </h3>
+            <a href="#index" class="ui-btn-left">Back</a>
+        </div>
+
+        <div data-role="content">
+
+        </div>
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+
+        </div>
+    </div>    
+</body>
+   
+
+<script>
+	$(document).on('pagebeforecreate', '#index2', function(){       
+    $('[data-role="navbar"]').html('<ul>' +
+        '<li><a href="#SomePage" data-transition="fade" data-icon="none">By Brand</a></li>' +
+        '<li><a href="#AnotherPage" data-transition="fade" data-icon="none">By Flavor</a></li>' +
+        '<li><a href="#LastPage" data-transition="fade" data-icon="none">Zero Nicotine</a></li>' +
+        '</ul>');
+});
+</script>
+</html>

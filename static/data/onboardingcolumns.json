@@ -1,0 +1,60 @@
+[
+  {
+    "field": "Edit_Row",
+    "title": "Edit_Row"
+  },
+  {
+    "field": "SUBJECT", 
+    "title": "name"
+   
+  },
+  {
+    "field": "ID",
+    "title": "ID"
+ 
+  },
+  {
+    "field": "TOPIC",
+    "title": "topic"
+  },
+  {
+    "field": "DEVICE",
+    "title": "DEVICE"
+  },
+  {
+    "field": "VERSION",
+    "title": "VERSION"
+  },
+  {
+    "field": "ISSUE",
+    "title": "ISSUE"
+  },
+  {
+    "field": "SOLUTION",
+    "title": "SOLUTION"
+  },
+  {
+    "field": "TRIGGER",
+    "title": "TRIGGER"
+  },
+  {
+    "field": "ALTERNATIEFLOW",
+    "title": "ALTERNATIEFLOW"
+  },
+  {
+    "field": "DOCS",
+    "title": "Documentation"
+
+  },
+  {
+    "field": "NORMALFLOW",
+    "title": "workflow"
+
+  },
+   {
+   
+   "field": "PRECONDITION",
+    "title": "Definition"
+  }
+
+]

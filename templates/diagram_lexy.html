@@ -1,0 +1,106 @@
+
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex">
+ 
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+     
+  
+          
+          <!-- <iframe src="/support/diagrams" style="height: 250px" frameborder="0"></iframe> -->
+
+            <div class="card-block pull-right col-sm-6">
+                 {% include 'codec.html' %}
+              </div>
+          <div class="card-block pull-left col-sm-6">
+            <h4 class="card-title">id: {{dig[num].id}}</h4>
+            <table class="list-group col-md-12">
+              <tr class="list-group-item">
+                <td><b>vertex: </b></b> {{dig[num].vertex}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              </tr>
+              <tr class="list-group-item">
+                <td><b>parent:</b> {{dig[num].parent}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              </tr>
+              <tr class="list-group-item">
+                <td><b>value:</b> {{dig[num].value}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              </tr>
+              <tr class="list-group-item">
+                <td><b>X:</b> {{dig[num].mxGeometry__x}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              </tr>
+              <tr class="list-group-item">
+                <td><b>Y:</b> {{dig[num].mxGeometry__y}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              </tr>
+              <tr class="list-group-item">
+                <td><b>Width: </b> <a href='{{data[num].DOCS}}'/>{{dig[num].mxGeometry__width}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              
+              </tr>
+              <tr class="list-group-item">
+                <td><b>Height: </b> <a href='{{data[num].DOCS}}'/> {{dig[num].mxGeometry__height}} </td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              
+              </tr>
+              <tr class="list-group-item">
+                <td><b>as:  </b> <a href='{{data[num].DOCS}}'/>{{dig[num].mxGeometry__as}}</td>
+                <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+              
+              </tr>
+              <thead>
+      <tr>
+              <th class= "yourFormatter2"> </th>
+</tr>
+</thead>
+              </table>
+              
+          </div>
+       
+
+
+     
+    </table>
+    <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+return ' <form action="" method="post" id={{data.ID}}>{{ form.csrf }}<div class="input text"><center><b>Enter Id of this row</b></center><br>{{ form.ID.label }} {{ form.ID }}<center><b>__edit__</b><br></center>{{ form.name.label }} {{ form.name }}{{ form.topic.label }} {{ form.topic }}{{ form.deviceversion.label }} {{ form.deviceversion }}{{form.device.label}}{{form.device}}{{form.solution.label}}{{form.solution}}{{form.trigger.label}}{{form.trigger}}{{form.alternatieflow.label}}{{form.alternatieflow}}{{form.DOCS.label}}{{form.DOCS}}{{form.issue.label}}{{form.issue}}</div><div class="input submit"><input type="submit" value="Submit" /></div></form>';
+}
+</script>
+  
+  
+  
+
+
+ 
+ 

@@ -1,0 +1,273 @@
+<!-- /.row-->
+<div class="col-lg-12 ">
+    <h1>Business Model Section</h1>
+    <div class="jumbotron">
+<div class="row">
+ <div class="col-lg-3 col-md-6">
+        <div class="panel panel-warning">
+        <div class="panel-heading">
+        <div class="row">
+        <div class="col-xs-3"></i></div>
+        <div class="col-xs-9 text-right">
+        <div class="">Production Cost Calculator</div>
+        <div>Use to Forcast Unit Cost</div>
+        </div>
+        </div>
+        </div><a href="#">
+        <div class="panel-footer"><span class="pull-left">
+        <form method="post" action="">
+            
+            <label for="units">units:</label>
+            <input type="text" name="units" id="units">
+            <br>
+            <label for="cycle_time">Cycle time:</label>
+            <input type="text" name="cycle_time" id="cycle_time">
+            
+            <br>
+            <label for="rate">Rate:</label>
+            <input type="text" name="rate" id="rate">
+            <br>
+            <label for="software">Software:</label>
+            <input type="text" name="software" id="software">
+            <br>
+            <label for="hardware">Hardware:</label>
+            <input type="text" name="hardware" id="hardware">
+            <br>
+            
+            <br>
+            <input type="submit" value="Calculate"/>
+        </form>
+            <hr>
+                <!-- note how you can add 3 to jaja2. this will help agragaite reuslt from one micro application to the next -->
+        Units: {{units}}
+        <br>
+        Cycle time: {{cycle_time}}
+        <br>
+        Rate: {{rate}}
+        <br>
+        Software: {{software}}
+        <br>
+        Hardware: {{hardware}}
+        <br>
+        Cost: <b>$ {{ results }}</b></span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+        <div class="clearfix"></div>
+    </div></a>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-6">
+    <div class="panel panel-warning">
+    <div class="panel-heading">
+    <div class="row">
+    <div class="col-xs-3"></i></div>
+    <div class="col-xs-9 text-right">
+    <div class="">Wholesale Price</div>
+    <div>Markup or cost by 2, here is our Wholesale price</div>
+    </div>
+    </div>
+    </div><a href="#">
+    <div class="panel-footer"><span class="pull-left">
+    Units: {{units}}
+    <br>
+    Cycle time: {{cycle_time}}
+    <br>
+    Rate: {{rate}}
+    <br>
+    Software: {{software}}
+    <br>
+    Hardware: {{hardware}}
+    <br>
+    Cost: $ {{ results }}
+    <br>
+            <!-- note how you can add 3 to jaja2. this will help agragaite reuslt from one micro application to the next -->
+    Wholesale Price: <b>$ {{ (results * 2)/12 }}</b></span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+    <div class="clearfix"></div>
+    </div></a>
+ </div>
+    </div>
+
+<div class="col-lg-3 col-md-6">
+    <div class="panel panel-warning">
+    <div class="panel-heading">
+    <div class="row">
+    <div class="col-xs-3"></i></div>
+    <div class="col-xs-9 text-right">
+    <div class="">Retail Price</div>
+    <div>Markup Wholesale price by 2, here is our retail price</div>
+    </div>
+    </div>
+    </div><a href="#">
+    <div class="panel-footer"><span class="pull-left">
+    Units: {{units}}
+    <br>
+    Cycle time: {{cycle_time}}
+    <br>
+    Rate: {{rate}}
+    <br>
+    Software: {{software}}
+    <br>
+    Hardware: {{hardware}}
+    <br>
+    Cost: $ {{ results }}
+    <br>
+            <!-- note how you can add 3 to jaja2. this will help agragaite reuslt from one micro application to the next -->
+    Retail Price (plan 1): <b>$ {{ ((results *2)*2)/12 }}</b><br>
+    Retail Price (plan 2): <b>$ {{ (((results *2)*2)/12)*1.5 }}</b><br>
+    Retail Price (plan 3): <b>$ {{ ((((results *2)*2)/12)*1.5)*1.5 }}</b></span><span class="
+    pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+    <div class="clearfix"></div>
+    </div></a>
+</div>
+</div>
+
+
+
+<div class="col-lg-3 col-md-6">
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+    <div class="row">
+    <div class="col-xs-3"><i class="fa fa-money fa-5x"></i></div>
+    <div class="col-xs-9 text-right">
+    <div class="">Revenue Goal</div>
+    <div>Average Revenue per user</div>
+    </div>
+    </div>
+
+
+
+    </div>
+    Units: {{units}}
+    <br>
+    Cycle time: {{cycle_time}}
+    <br>
+    Rate: {{rate}}
+    <br>
+    Software: {{software}}
+    <br>
+    Hardware: {{hardware}}
+    <br>
+    Cost: $ {{ results }}
+    <br>
+    <select id="dropdown-mobile" name="select">
+         <option selected>Units Sold this month</option>
+         <option>1</option>
+         <option>2</option>
+         <option>3</option>
+           <option>4</option>
+         <option>5</option>
+         <option>6</option>
+           <option>7</option>
+         <option>8</option>
+         <option>9</option>
+           <option>10</option>
+         <option>11</option>
+         <option>12</option>
+           <option>13</option>
+         <option>14</option>
+         <option>15</option>
+           <option>16</option>
+         <option>17</option>
+         <option>18</option>
+     </select>
+     <p id="units_sold"></p>
+     <br>
+     <p id="MRR"></p>
+     <br>
+
+     <p id="Rev_CHRUN"></p>
+     <br>
+     <p id="ARPU"></p>
+     <br>
+     
+
+</div>
+
+</div>
+
+
+    <div class="col-lg-12" >
+               <div class="col-md-6 " >
+            <div class="panel-footer"><span class="">
+
+                    <b>Querterly  Cost</b>
+                    
+                    <hr>
+                    
+                    <!-- note how you can add 3 to jaja2. this will help agragaite reuslt from one micro application to the next -->
+            Units: {{units * 10}}
+            <br>
+            Cycle time: {{cycle_time * 10}}
+            <br>
+            Rate: {{rate * 10}}
+            <br>
+            Software: {{software * 3 }}
+            <br>
+            Hardware: {{hardware * 3}}
+            <br>
+            Cost: <b>$ {{ (results * 10)-(software*7)-(hardware*7) }}</b></span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+            <div class="clearfix"></div>
+            </div></a>
+            </div>
+            
+            
+
+            <div class="col-md-6  ">
+            
+            <div class="panel-footer"><span class="">
+            <b>Querterly Revenue Goal</b>
+            <div>Average Revenue per user</div>
+            
+ 
+
+
+           
+            Units: {{units}}
+            <br>
+            Cycle time: {{cycle_time}}
+            <br>
+            Rate: {{rate}}
+            <br>
+            Software: {{software}}
+            <br>
+            Hardware: {{hardware}}
+            <br>
+            Cost: $ {{ results }}
+            <br>
+            
+             <p id="Qunits_sold"></p>
+             <br>
+             <p id="QMRR"></p>
+             <br>
+
+             <p id="QRev_CHRUN"></p>
+             <br>
+             <p id="QARPU"></p>
+             <br>
+      </div>       
+ </div>
+            </div>
+            </div>
+    </div>
+            </div>
+
+
+
+
+<script>
+$("#dropdown-mobile").on('change', function(){
+    console.log("list item selected");
+    var val = $(this).val();    
+
+    document.getElementById("units_sold").innerHTML = "we are forcasting "+'<b>'+ val +'</b>'+" new subscribers this mounth";
+    document.getElementById("MRR").innerHTML = "we are forcasting an MRR of "+'<b>'+ val*{{ ((results *2)*2)/12 }} +'</b>'+" ";
+    document.getElementById("ARPU").innerHTML = "we are forcasting "+'<b>'+ (val*{{ ((results *2)*2)/12 }})/(val/.3) +'</b>'+" ARPU this mounth";
+
+    document.getElementById("Rev_CHRUN").innerHTML = "we are forcasting "+'<b>'+ val*.3 +'</b>'+" revenue Chrun this month(30%)";
+    document.getElementById("Qunits_sold").innerHTML = "we are forcasting "+'<b>'+ (val)*10 +'</b>'+" new subscribers this mounth";
+    document.getElementById("QMRR").innerHTML = "we are forcasting an MRR of "+'<b>'+ val*{{ (((results *2)*2)/12)*10 }} +'</b>'+" ";
+    document.getElementById("QARPU").innerHTML = "we are forcasting "+'<b>'+ (val*{{ (((results *2)*2)/12)*10 }})/(val/.3) +'</b>'+" ARPU this mounth";
+    document.getElementById("QRev_CHRUN").innerHTML = "we are forcasting "+'<b>'+ (val*.3)*10 +'</b>'+" revenue Chrun this month(30%)";
+});
+</script>

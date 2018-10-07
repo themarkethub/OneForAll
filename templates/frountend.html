@@ -1,0 +1,180 @@
+
+
+
+<script>
+window.onload = function () {
+
+var options = {
+  title: {
+    text: "Top reported Trends for 7.1.2"
+  },
+
+  data: [{
+    type: "column",
+    yValueFormatString: "#,###",
+    indexLabel: "{y}",
+        color: "#546BC1",
+    dataPoints: [
+      { label: "EDA", y: 196 },
+      { label: "EXA", y: 263 },
+      { label: "ECA", y: 134 },
+      { label: "Triggers", y: 216 },
+      { label: "Atlas", y: 174 },
+      { label: "AWS", y: 122 },
+      { label: "Datafeed", y: 182 }
+    ]
+  }]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+function updateChart() {
+  var performance, deltaY, yVal;
+  var dps = options.data[0].dataPoints;
+  for (var i = 0; i < dps.length; i++) {
+    deltaY = Math.round(2 + Math.random() * (-2 - 2));
+    yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
+    dps[i].y = yVal;
+  }
+  options.data[0].dataPoints = dps;
+  $("#chartContainer").CanvasJSChart().render();
+};
+updateChart();
+
+setInterval(function () { updateChart() }, 500);
+
+}
+</script>
+<script type="text/javascript">
+function processFile() {
+ var fileSize = 0;
+ var theFile = document.getElementById("myFile").files[0];
+ if (theFile) {
+ var table = document.getElementById("myTable");
+ var headerLine = "";
+ var myReader = new FileReader();
+ myReader.onload = function(e) {
+ var content = myReader.result;
+ var lines = content.split("\r");
+ for (var count = 0; count < lines.length; count++) {
+ var row = document.createElement("tr");
+ var rowContent = lines[count].split(",");
+ for (var i = 0; i < rowContent.length; i++) {
+ if (count == 0) {
+ var cellElement = document.createElement("th");
+ } else {
+ var cellElement = document.createElement("td");
+ }
+ var cellContent = document.createTextNode(rowContent[i]);
+ cellElement.appendChild(cellContent);
+ row.appendChild(cellElement);
+ }
+ myTable.appendChild(row);
+ }
+ }
+ myReader.readAsText(theFile);
+ }
+ return false;
+}
+</script>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+
+</style>
+<body>
+<div class="container-fluid">
+<div class="card border-info mb-3 col-3" style="width: 100%;">
+  <div class="card-body">
+  
+
+
+<h1>ExtraHop Support Report Creater</h1>
+<form onsubmit="return processFile();" action="#" name="myForm" id="aForm" method="POST">
+<input type="file" id="myFile" name="myFile"><br>
+<input type="submit" name="submitMe" value="Process File">
+</form>
+
+<section>
+  <div class="table-responsive">
+<table id="myTable" class="table table-hover"></table>
+</div>
+</section>
+
+
+<div class="table-responsive">
+<table id="demo" class="table table-hover"></table>
+<h1>ExtraHop Support Case Trends (7.2)</h1>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</div>
+
+    <a href="#" class="card-link">PRINT</a>
+    <a href="#" class="card-link">SEND TO MONGO DB</a>
+  </div>
+
+</div>
+</div>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "template1.xml", true);
+  xhttp.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>ID</th><th>SUBJECT</th><th>ACTOR</th><th>TOPIC</th><th>DEVICE</th><th>VERSION</th><th>PRECONDITION</th><th>TRIGGER</th><th>POSTCONDITION</th><th>NORMALFLOW</th><th>ALTERNATIEFLOW</th><th>ISSUE</th><th>SOLUTION</th><th>CASE</th><th>JIRA</th><th>DOCS</th><th>ACTION</th></tr>";
+  var x = xmlDoc.getElementsByTagName("USECASE1");
+  for (i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+     x[i].getElementsByTagName("ID")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("SUBJECT")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("ACTOR")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TOPIC")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("DEVICE")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("VERSION")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("PRECONDITION")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("TRIGGER")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("POSTCONDITION")[0].childNodes[0].nodeValue +
+    "</td><td><a href='NORMALFLOW.html'/>"+
+    x[i].getElementsByTagName("NORMALFLOW")[0].childNodes[0].nodeValue +
+    "</td><td><a href='ALTERNATIEFLOW.html'/>"+
+    x[i].getElementsByTagName("ALTERNATIEFLOW")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("ISSUE")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("SOLUTION")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("CASE")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("JIRA")[0].childNodes[0].nodeValue +
+    "</td><td>"+
+    x[i].getElementsByTagName("DOCS")[0].childNodes[0].nodeValue +
+    "</td><td><button type='button' class='btn btn-warning btn-sm'>Edit</button><button type='button' class='btn btn-warning btn-sm'>Delete</button></td></tr>";
+
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</body>
+</html>

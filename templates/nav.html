@@ -1,0 +1,640 @@
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <link href="/static/metisMenu/metisMenu.min.css" rel="stylesheet">
+<link href="/static/css/sb-admin-2.css" rel="stylesheet">
+
+<style>
+/*!
+ * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (https://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    background-color: #f8f8f8;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+
+
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a.active {
+    background-color: #eee;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+.btn-outline {
+    color: inherit;
+    background-color: transparent;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+
+.chat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #999;
+}
+
+.chat li.left .chat-body {
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+    margin-right: 60px;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+}
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
+}
+
+.chat-panel .panel-body {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.login-panel {
+    margin-top: 25%;
+}
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    background: 0 0;
+}
+
+table.dataTable thead .sorting_asc:after {
+    content: "\f0de";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.dataTable thead .sorting_desc:after {
+    content: "\f0dd";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.dataTable thead .sorting:after {
+    content: "\f0dc";
+    float: right;
+    font-family: fontawesome;
+    color: rgba(50,50,50,.5);
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.show-grid [class^=col-] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #ddd;
+    background-color: #eee!important;
+}
+
+.show-grid {
+    margin: 15px 0;
+}
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green a {
+    color: #5cb85c;
+}
+
+.panel-green a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red a {
+    color: #d9534f;
+}
+
+.panel-red a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow a {
+    color: #f0ad4e;
+}
+
+.panel-yellow a:hover {
+    color: #df8a13;
+}
+</style>
+
+<div id="wrapper">
+<!-- Navigation-->
+<nav class="navbar navbar-default " role="navigation" style="margin-bottom: 10px">
+<div class="navbar-header">
+<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html">Support Lab v1.0</a>
+</div>
+
+<!-- /.navbar-header-->
+<nav class="navbar navbar-inverse navbar-fixed-top .col-xs-6 .col-md-4">
+<div class="container-fluid .col-xs-6 .col-md-4">
+        <div class="navbar-header .col-xs-6 .col-md-4">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+    <img src="/Assets/BlackFoxthumb (2).fw.png" width="30" height="30" alt="">
+  </a>
+          <a class="navbar-brand" href="/Blackfox.php#">BlackFox Studio Labs</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+          
+        <ul class="nav navbar-nav navbar-right">
+<!-- /.dropdown-->
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i></a>
+<ul class="dropdown-menu dropdown-alerts">
+<li><a href="#">
+<div><i class="fa fa-comment fa-fw"></i> Total number of Cases<span class="pull-right text-muted small">4 minutes ago</span></div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div><i class="fa fa-twitter fa-fw"></i> 3 New Followers<span class="pull-right text-muted small">12 minutes ago</span></div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div><i class="fa fa-envelope fa-fw"></i> Total number of workflow cases<span class="pull-right text-muted small">4 minutes ago</span></div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div><i class="fa fa-tasks fa-fw"></i> Total number of workflow case with jira tickets<span class="pull-right text-muted small">4 minutes ago</span></div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div><i class="fa fa-upload fa-fw"></i> Change delta this week<span class="pull-right text-muted small">4 minutes ago</span></div></a></li>
+<li class="divider"></li>
+<li><a class="text-center" href="#"><strong>See All Alerts</strong><i class="fa fa-angle-right"></i></a></li>
+</ul>
+<!-- /.dropdown-alerts-->
+</li>
+<!-- /.dropdown-->
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i></a>
+<ul class="dropdown-menu dropdown-user">
+<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+<li class="divider"></li>
+<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+</ul>
+<!-- /.dropdown-user-->
+</li>
+<!-- /dropdown icon 2 begins here-->
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-tasks fa-fw"></i><i class="fa fa-caret-down"></i></a>
+<ul class="dropdown-menu dropdown-tasks">
+<li><a href="#">
+<div>
+<p><strong>Task 1</strong><span class="pull-right text-muted">40% Complete</span></p>
+<div class="progress progress-striped active">
+<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
+</div>
+</div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div>
+<p><strong>Task 2</strong><span class="pull-right text-muted">20% Complete</span></p>
+<div class="progress progress-striped active">
+<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
+</div>
+</div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div>
+<p><strong>Task 3</strong><span class="pull-right text-muted">60% Complete</span></p>
+<div class="progress progress-striped active">
+<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+</div>
+</div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div>
+<p><strong>Task 4</strong><span class="pull-right text-muted">80% Complete</span></p>
+<div class="progress progress-striped active">
+<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
+</div>
+</div></a></li>
+<li class="divider"></li>
+<li><a class="text-center" href="#"><strong>See All Tasks</strong><i class="fa fa-angle-right"></i></a></li>
+</ul>
+
+<!-- /.dropdown-tasks-->
+</li>
+
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i></a>
+<ul class="dropdown-menu dropdown-messages">
+<li><a href="#">
+<div><strong>John Smith</strong><span class="pull-right text-muted"><em>Yesterday</em></span></div>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div><strong>John Smith</strong><span class="pull-right text-muted"><em>Yesterday</em></span></div>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div></a></li>
+<li class="divider"></li>
+<li><a href="#">
+<div><strong>John Smith</strong><span class="pull-right text-muted"><em>Yesterday</em></span></div>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div></a></li>
+<li class="divider"></li>
+<li><a class="text-center" href="#"><strong>Read All Messages</strong><i class="fa fa-angle-right"></i></a></li>
+</ul>
+<!-- /.dropdown-messages-->
+</li>
+
+<!-- /.dropdown-->
+          <li class="Tools">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Tools <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li role="separator" class="divider">Media Channels</li>
+                  <li class="dropdown-header">Media Channels</li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal">BlackFox Channel</li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Tech Course</li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal3">C(sharp) Course</li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal3">PHP Course</li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal3">Node.js Course</li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal3">Java Course</li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Study</li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal2">Music Player!</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal4">Text Editor</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#myModal5">Video Chat</a></li>
+                </ul>
+              </li>
+            <li><a href="/AdminPortal.php">Admin Portal</a></li>
+            <li><a href="#">Admin Dashboard</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <center><form class="navbar-form" role="search">
+            <div class="input-group">
+            <input type="text" size="30" onkeyup="showResult(this.value)"><div class="input-group-btn">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            
+             </span>
+             </div>
+    
+            
+        </div>
+        
+        </form></center>
+          </div>
+      </div>
+    <div id="livesearch"></div>
+    
+
+          
+    </nav>
+
+
+
+<!-- /.navbar-top-links-->
+<div class="navbar-inverse sidebar" role="navigation" style="width: 245px">
+<div class="sidebar-nav navbar-collapse">
+<ul class="nav" id="side-menu" >
+
+</div>
+ {% block content %}
+ {% if nume2s !=[] %}
+ {% for data in datas %}
+    
+    <center><hr><a href="/support/api/v1.0/usecase/profile/{{data.ID}}/"><i class="fa fa-dashboard fa-fw"></i>id:{{data.ID}} {{data.SUBJECT}} </a></center>
+  
+
+   
+    
+       {% endfor %}
+       {%endif%}
+       {% endblock %}
+
+<!-- /input-group-->
+</li>
+<li><a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+</ul>
+<!-- /.nav-second-level-->
+</li>
+
+</div>
+<!-- /.sidebar-collapse-->
+</div>
+<!-- /.navbar-static-side-->
+</nav>
+<div id="page-wrapper">
+<div class="row">
+<div class="col-lg-12">
+<h1 class="page-header">Dashboard</h1>
+</div>
+<!-- /.col-lg-12-->
+</div>
+<!-- /.row-->
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<div class="row">
+<div class="col-xs-3"><i class="fa fa-comments fa-5x"></i></div>
+<div class="col-xs-9 text-right">
+<div class="huge">{{all_cases_counter}}</div>
+<div>Total number of Support Cases</div>
+</div>
+</div>
+</div><a href="#">
+<div class="panel-footer"><span class="pull-left">View Details</span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+<div class="clearfix"></div>
+</div></a>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="panel panel-green">
+<div class="panel-heading">
+<div class="row">
+<div class="col-xs-3"><i class="fa fa-tasks fa-5x"></i></div>
+<div class="col-xs-9 text-right">
+<div class="huge">{{ Number_of_worflow}}</div>
+ 
+<div>Total number of {{data[num].SUBJECT}} Workflow Cases</div>
+</div>
+</div>
+</div><a href="#">
+<div class="panel-footer"><span class="pull-left">View Details</span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+<div class="clearfix"></div>
+</div></a>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="panel panel-yellow">
+<div class="panel-heading">
+<div class="row">
+<div class="col-xs-3"><i class="fa fa-shopping-cart fa-5x"></i></div>
+<div class="col-xs-9 text-right">
+<div class="huge">124</div>
+<div>Total number of {{data[num].SUBJECT}} Worklfow Cases with Jira Tickets</div>
+</div>
+</div>
+</div><a href="#">
+<div class="panel-footer"><span class="pull-left">View Details</span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+<div class="clearfix"></div>
+</div></a>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="panel panel-red">
+<div class="panel-heading">
+<div class="row">
+<div class="col-xs-3"><i class="fa fa-support fa-5x"></i></div>
+<div class="col-xs-9 text-right">
+<div class="huge">13</div>
+<div>Change in Number of Workflow Case from Last Week</div>
+</div>
+</div>
+</div><a href="#">
+<div class="panel-footer"><span class="pull-left">View Details</span><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+<div class="clearfix"></div>
+</div></a>
+</div>
+</div>
+</div>
+<!-- /.row-->
+
+<div class="col-lg-8">
+
+
+
+</div>
+
+
+</div>
+<!-- /.panel-heading-->
+
+</div>
+<!-- /#page-wrapper-->
+</div>
+<!-- /#wrapper-->
+</body>
+<script type="text/javascript">
+
+
+$(function() {
+
+    $('#side-menu').metisMenu();
+
+});
+
+// Loads the correct sidebar on window load, collapses the sidebar on window resize.
+// Sets the min-height of #page-wrapper to window size
+$(function() {
+    $(window).bind("load resize", function() {
+        topOffset = 50;
+        width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
+        if (width < 768) {
+            $('div.navbar-collapse').addClass('collapse');
+            topOffset = 100; // 2-row-menu
+        } else {
+            $('div.navbar-collapse').removeClass('collapse');
+        }
+
+        height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
+        height = height - topOffset;
+        if (height < 1) height = 1;
+        if (height > topOffset) {
+            $("#page-wrapper").css("min-height", (height) + "px");
+        }
+    });
+
+    var url = window.location;
+    var element = $('ul.nav a').filter(function() {
+        return this.href == url || url.href.indexOf(this.href) == 0;
+    }).addClass('active').parent().parent().addClass('in').parent();
+    if (element.is('li')) {
+        element.addClass('active');
+    }
+});
+
+</script>

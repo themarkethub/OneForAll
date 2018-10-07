@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <form method="post" action="{{ url_for('divide_result') }}">
+    	<h1>Production Cost Calculator</h1>
+        <br>
+        <label for="units">Number of units:</label>
+        <input type="text" name="units" id="units">
+        <br>
+        <label for="cycle_time">Cycle time:</label>
+        <input type="text" name="cycle_time" id="cycle_time">
+        <br>
+        <label for="rate">Rate:</label>
+        <input type="text" name="rate" id="rate">
+        <br>
+        <label for="software">Software:</label>
+        <input type="text" name="software" id="software">
+        <br>
+        <label for="hardware">Hardware:</label>
+        <input type="text" name="hardware" id="hardware">
+        <br>
+        
+        <br>
+        <input type="submit" value="Calculate"/>
+    </form>
+
+    </body>
+</html>

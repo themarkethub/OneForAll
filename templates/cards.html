@@ -1,0 +1,52 @@
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex">
+ 
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+.well {background: lightblue;}
+
+</style>
+          
+            <div class="card " >
+                  <img class="card-img-right" style="padding-top: ;" src='{{data[num].IMG}}' alt="Card image cap">
+                  <div class="card-block pull-left">
+                    <h4 class="card-title">{{data[num].SUBJECT}}</h4>
+                    <table class="list-group">
+                      <tr class="list-group-item">
+                        <td><b>PRECONDITION:</b></b> {{data[num].PRECONDITION}}</td>
+                        <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+                      </tr>
+                      <tr class="list-group-item">
+                        <td><b>TRIGGER:</b> {{data[num].TRIGGER}}</td>
+                        <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+                      </tr>
+                      <tr class="list-group-item">
+                        <td><b>NORMALFLOW:</b> {{data[num].NORMALFLOW}}</td>
+                        <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+                      </tr>
+                      <tr class="list-group-item">
+                        <td><b>ALTERNATIEFLOW:</b> {{data[num].ALTERNATIEFLOW}}</td>
+                        <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+                      </tr>
+                      <tr class="list-group-item">
+                        <td><b>ISSUE:</b> {{data[num].ISSUE}}</td>
+                        <td><a href="#" class="badge badge-danger pull-right">update</a></td>
+                      </tr>
+                      <tr class="list-group-item">
+                        <td><b>Documentation:</b> <a href='{{data[num].DOCS}}'/>link</td>
+                        <td><button type="button" data-id="7" class="btn btn-default editButton pull-right">Edit</button></td>
+                      
+                      </tr>
+                      
+                      </table>
+                    </div>
+          </div>

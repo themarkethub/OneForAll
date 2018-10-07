@@ -1,0 +1,81 @@
+ </script>
+         <script type='text/javascript'>
+    $(window).load(function(){
+      
+      
+  
+      $(function() {
+        $('#table').bootstrapTable({ 
+        
+        });
+      });
+    });
+  </script>              
+
+  
+  
+    <div id="toolbar" ></div>
+    <table
+      id="table"
+      data-toggle="true"
+      data-toolbar="#toolbar"
+      data-search="true"
+      data-show-columns="true"
+      data-pagination="true"
+      data-height="400"
+      data-width="100">
+
+      <thead>
+        <tr>
+<th data-field = "" data-formatter="yourFormatter"> </th>       
+
+ 
+<th>ID</th>
+     <th>SUBJECT</th>
+     <th>Topic</th>
+     <th>Definition</th>
+     <th>Device</th>
+     <th>Version</th>
+     <th>Issue</th>
+     <th>solution</th>
+     <th>Trigger</th>
+     <th>Alternatieflow</th>
+          <th>Documentation</th>
+               <th>workflow</th>     
+</tr>
+
+    </thead>
+    <tbody>
+        {% block content %}
+ {% for doc in datas %}
+ 
+    <tr>
+      <td>Action  </td>
+     <td>{{doc.ID}}</td>
+     <td>{{doc.SUBJECT}}</td>
+     <td>{{doc.CASE}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+     <td>{{doc.DOC}} </td>
+  
+ </tr>
+   
+    
+       {% endfor %}
+     
+       {% endblock %}
+       
+    </tbody>
+</table>
+ <script>
+function yourFormatter(value) {
+return ' <form action="" method="post" id={{data.ID}}>{{ form.csrf }}<div class="input text"><center><b>Enter Id of this row</b></center><br>{{ form.ID.label }} {{ form.ID }}<center><b>__edit__</b><br></center>{{ form.name.label }} {{ form.name }}{{ form.topic.label }} {{ form.topic }}{{ form.deviceversion.label }} {{ form.deviceversion }}{{form.device.label}}{{form.device}}{{form.solution.label}}{{form.solution}}{{form.trigger.label}}{{form.trigger}}{{form.alternatieflow.label}}{{form.alternatieflow}}{{form.DOCS.label}}{{form.DOCS}}{{form.issue.label}}{{form.issue}}</div><div class="input submit"><input type="submit" value="Submit" /></div></form>';
+}
+</script>
+        

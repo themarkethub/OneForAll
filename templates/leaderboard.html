@@ -1,0 +1,182 @@
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script >
+ 
+
+
+  
+
+//UPDATE LEADERBOARD
+// This function takes in the data retrieved from the back-end and dynamically updates the leaderboard.
+function UPDATE_LEADERBOARD(lb_data){
+ 
+    // This is a hacky form of checking that everything
+    // you are given is always an object and not a string
+    // You can set response headers in flask to mimetype json
+    // so you don't have to do this. But I was kinda lazy.
+    if (typeof(lb_data) == "string"){
+        lb_data = JSON.parse(lb_data);
+    }
+ 
+ 
+    console.log(lb_data)
+    lb_html = "<table>";
+
+    lb_html += "<tr><th>Name</th><th>Score</th></tr>";
+    if (lb_data != []){
+        for(i = 0; i < lb_data.length; i++){
+            lb_html += "<tr><th>"+lb_data[i].name+"</th><th>"+lb_data[i].score+"</th><th><button OnClick='RM_ENTRY("+lb_data[i].id+")'>X</button></th></tr>";
+        }
+    }
+    lb_html += "</table>";
+    $('#leaderboard').html(lb_html);
+}
+ 
+ 
+//GET LEADERBOARD
+function GET_LEADERBOARD(){
+ 
+    var urlstring = "/api/getleaders";
+ 
+    $.ajax({
+        url: urlstring,
+        headers: { 
+            'Accept': 'application/json',
+            'Content-Type': 'application/json' 
+        },
+        type: 'get',
+        success: function (data) {
+            console.log("Get Leaderboard: Successful!");
+            UPDATE_LEADERBOARD(data);
+        },
+        error: function(data){
+            console.log("Get Leaderboard: Error!");
+            //alert("Coudn't Get Leaderboard!");
+        }
+    });
+ 
+ 
+}
+ 
+//ADD ENTRY
+function ADD_ENTRY(){
+ 
+    var urlstring = "/api/addentry/";
+ 
+    var new_entry = {
+            name: $("#name").val(),
+            score: $("#score").val(),
+    }
+ 
+    $.ajax({
+        url: urlstring,
+        headers: { 
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            console.log("Add Entry: Successful!");
+            UPDATE_LEADERBOARD(data);
+        },
+        error: function(data){
+            console.log("Add Entry: Error!");
+            alert("Coudn't Add Entry!");
+        },
+        data: JSON.stringify(new_entry)
+    });
+ 
+}
+ 
+//REMOVE ENTRY
+function RM_ENTRY(id){
+ 
+    var urlstring = "/api/rmentry/"+id;
+ 
+    $.ajax({
+        url: urlstring,
+        headers: { 
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'  
+        },
+        type: 'delete',
+        success: function (data) {
+            console.log("Remove Entry: Successful!");
+            UPDATE_LEADERBOARD(data);
+        },
+        error: function(data){
+            console.log("Remove Entry: Error!");
+            alert("Coudn't Remove Entry!");
+        }
+    });
+}
+ 
+ 
+//Run When Document is Loaded
+window.onload = function(){
+    GET_LEADERBOARD(); //Get the leaderboard upon loading the page
+    setInterval(GET_LEADERBOARD, 5000); //Every so often check leaderboard to see if it changed. Try using different tabs 🙂
+};
+ 
+ 
+</script> 
+<br>
+<br>
+<br>
+{% include 'userprofile.html' %}
+
+
+<h1>Auto Tasks</h1>
+
+{% block content %}
+
+
+
+<div id="leaderboard"></div>
+<hr>
+<form method="POST" action="{{ url_for('add_entry') }}" >
+  Live Activity notification: <input name="name" id="name" type="text" placeholder="John Doe" /> Score: <input name="score" id="score" type="text" placeholder="150" /> 
+   <input type="submit" value="add"/>
+</form>
+<hr>
+
+<div class="container">
+  <h2>LeaderBoard</h2>
+  <p>Who is gaining the must new skills?</p>            
+   <table class="table table-bordered">
+    <thead>
+    	{% set cnt = [0] %}
+{% for User in Users|sort(attribute='Points',reverse = True) %}
+ 
+      <tr>
+         
+          {% if cnt.append(cnt.pop() + 1) %}
+          {% endif %} 
+
+      	<td>rank: {{cnt[0] }}</td>
+      	<td>Name: {{User.name}}</td>
+      	<td>image: <img src="{{User.image}}" width="82" height="86" title="White flower" alt="Flower"></td>
+      	<td>Score: {{User.Points}}</td>
+      	<td>level: {{User.Lvl}}</td>
+      </tr>
+  
+   
+
+   
+     
+
+{% endfor %}
+
+{% endblock %}
+ </thead>
+    <tbody>
+      
+  </table>
+</div>
