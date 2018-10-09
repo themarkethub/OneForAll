@@ -702,10 +702,11 @@ def house1():
     Users=mongo.db.users.find({})
     login_user = mongo.db.users.find_one({'name' : session['username']})
     i = Insightly()
-    projects = i.read('projects',id=8110743)
-    print projects
+    projects = i.read('projects')
+    tasks = i.read('tasks', filters={'PROJECT' : 'Issues'})
+    print tasks
 
-    return render_template('house1.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
+    return render_template('house1.html', tasks=tasks, projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
 
     
 if __name__ == "__main__":
