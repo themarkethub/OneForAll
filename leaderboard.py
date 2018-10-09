@@ -60,7 +60,7 @@ from wtforms import Form, TextField, IntegerField, TextAreaField, validators, St
 import logging
 from transitions import Machine
 import random
-
+from insightly import Insightly
 
 debug=True
 
@@ -701,7 +701,11 @@ def house1():
     VideoProduct3 = VideoWorkflows("VideoProduct3")
     Users=mongo.db.users.find({})
     login_user = mongo.db.users.find_one({'name' : session['username']})
-    return render_template('house1.html', Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
+    i = Insightly()
+    projects = i.read('projects',id=8110743)
+    print projects
+
+    return render_template('house1.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
 
     
 if __name__ == "__main__":
