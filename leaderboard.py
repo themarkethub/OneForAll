@@ -702,10 +702,23 @@ def house1():
     Users=mongo.db.users.find({})
     login_user = mongo.db.users.find_one({'name' : session['username']})
     i = Insightly()
-    projects = i.read('projects',id=8110743)
+    projects = i.read('tasks',id=8110743)
     print projects
 
     return render_template('house1.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
+@app.route('/notebooks', methods=['GET', 'POST'])
+def notebooks():
+    VideoProduct = VideoWorkflows("VideoProduct")
+    videoTask = videoTasks("videoTask")
+    VideoProduct2 = VideoWorkflows("VideoProduct2")
+    VideoProduct3 = VideoWorkflows("VideoProduct3")
+    Users=mongo.db.users.find({})
+    login_user = mongo.db.users.find_one({'name' : session['username']})
+    i = Insightly()
+    projects = i.read('tasks')
+    #print projects
+
+    return render_template('notebook.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
 
     
 if __name__ == "__main__":

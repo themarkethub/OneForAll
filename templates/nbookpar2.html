@@ -1,0 +1,85 @@
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tabParcial2 {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tabParcial2 button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tabParcial2 button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tabParcial2 button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontentParcial2 {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+}
+</style>
+<div class="tabParcial2">
+              <button class="tablinksParcial2" onclick="openCityParcial2(event, 'Londonlayer3')" >Londonlayer3</button>
+              <button class="tablinksParcial2" onclick="openCityParcial2(event, 'Parislayer3')">Parislayer3</button>
+              <button class="tablinksParcial2" onclick="openCityParcial2(event, 'Tokyolayer3')">Tokyolayer3</button>
+            </div>
+<div id="Londonlayer3" class="tabcontentParcial2">
+ <h3>Londonlayer3</h3>
+ <p>Londonlayer3 is the capital of France.</p> 
+</div>
+
+<div id="Parislayer3" class="tabcontentParcial2">
+  <h3>Parislayer3</h3>
+  <p>Parislayer3 is the capital of France.</p> 
+</div>
+
+<div id="Tokyolayer3" class="tabcontentParcial2">
+  <h3>Tokyolayer3</h3>
+  <p>Tokyolayer3 is the capital of Japan.</p>
+</div>
+
+<script>
+function openCityParcial2(evt, cityName) {
+    var i, tabcontentParcial2, tablinksParcial2;
+    tabcontentParcial2 = document.getElementsByClassName("tabcontentParcial2");
+    for (i = 0; i < tabcontentParcial2.length; i++) {
+        tabcontentParcial2[i].style.display = "none";
+    }
+    tablinksParcial2 = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinksParcial2.length; i++) {
+        tablinksParcial2[i].className = tablinksParcial2[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += "";
+}
+
+// Get the element with id="defaultOpen" and click on it
+</script>

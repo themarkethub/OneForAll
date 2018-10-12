@@ -1,0 +1,274 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.subject {
+    max-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-width 0s;
+    background: #fafafa;
+}
+
+.topic {
+    max-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-width 0s;
+    background: #fafafa;
+}
+ul{
+
+}
+ul.active {
+    max-width: 100%;
+    max-height: 100%;
+    transition: max-width 1s 0.1s;
+}
+li {
+	max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.well {
+	height:100%;
+}
+body
+{
+   overflow-y: auto;
+}
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent2 {
+    float: right;
+    padding: 12px;
+    border: 1px solid #ccc;
+    width: 60%;
+    border-left: none;
+    height: 100%;
+}
+.tabcontent {
+    float: right;
+    padding: 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 100%;
+}
+</style>
+
+{% include 'userprofile.html' %}
+<br>
+<br>
+<div class="container-fluid" style="">
+    <div class="row">
+        <div class="col-xs-2 col-sm-3 col-md-2 sidebar well well-lg">
+              <center><h1>Notebooks</h1></center>
+            <ul class="nav nav-sidebar main  ">
+                <li class="active"><a href="#subject1" onclick="return false;">Notebook 1</a></li>
+                <li><a href="#subject2" onclick="return false;">Notebook 2</a></li>
+                <li><a href="#subject3" onclick="return false;">Notebook 3</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2 sidebar well well-lg">
+            <center><h1>Sections</h1></center>
+           <ul id="subject1" class="nav nav-sidebar subject active">
+                <li class="active"><a href="#topic1" onclick="return false;">Notebook1 subject A1</a></li>
+                <li><a href="#topic2" onclick="return false;">Notebook1 subject b1</a></li>
+                <li><a href="#topic3" onclick="return false;">Notebook1 subject c1</a></li>
+            </ul>
+            <ul id="subject2" class="nav nav-sidebar subject">
+                <li><a href="#topic4" onclick="return false;">Notebook2 subject A2</a></li>
+                <li><a href="#topic5" onclick="return false;">Notebook2 subject b2</a></li>
+                <li><a href="#topic6" onclick="return false;">Notebook2 subject c2</a></li>
+            </ul>
+            <ul id="subject3" class="nav nav-sidebar subject">
+                <li"><a href="#topic7" onclick="return false;">Notebook3 subject A3</a></li>
+                <li><a href="#topic8" onclick="return false;">Notebook3 subject b3</a></li>
+                <li><a href="#topic9" onclick="return false;">Notebook3 subject c3</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-5 sidebar  ">
+            <ul id="topic1" class="nav nav-sidebar topic tab ">
+            	<center><h1>Pages</h1></center>
+            	<button class="tablinks" onclick="openCity(event, 'topic 1')" id="defaultOpen">topic 1</button>
+                <button class="tablinks" onclick="openCity(event, 'topic 2')">topic 2</button>
+                <button class="tablinks" onclick="openCity(event, 'topic 3')">topic 3</button>
+                
+            </ul>
+
+				<div id="topic 1" class="tabcontent">
+				  <h3>topic 1</h3>
+				  <p>topic 1 is the capital city of England.</p>
+				</div>
+
+				<div id="topic 2" class="tabcontent">
+				  <h3>topic 2</h3>
+				  <p>topic 2 is the capital of France.</p> 
+				</div>
+
+				<div id="topic 3" class="tabcontent">
+				  <h3>topic 3</h3>
+				  <p>topic 3 is the capital of Japan.</p>
+				</div>
+
+            <ul id="topic2" class="nav nav-sidebar topic tab">
+               <center><h1>Pages</h1></center>
+            	<button class="tablinks" onclick="openCity(event, 'topic 2.1')" id="defaultOpen">Topic 2.1</button>
+                <button class="tablinks" onclick="openCity(event, 'topic 2.2')">Topic 2.2</button>
+                <button class="tablinks" onclick="openCity(event, 'topic 2.3')">Topic 2.3</button>
+                
+            </ul>
+
+				<div id="topic 2.1" class="tabcontent2">
+				  <h3>topic 2.1</h3>
+				  <p>topic 2.1 is the capital city of England.</p>
+				</div>
+
+				<div id="topic 2.2" class="tabcontent2">
+				  <h3>topic 2.2</h3>
+				  <p>topic 2.2 is the capital of France.</p> 
+				</div>
+
+				<div id="topic 2.3" class="tabcontent2">
+				  <h3>topic 2.3</h3>
+				  <p>topic 2.3 is the capital of Japan.</p>
+				</div>
+            <ul id="topic3" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 3.1</a></li>
+                <li><a href="#" onclick="return false;">topic 3.2</a></li>
+                <li><a href="#" onclick="return false;">topic 3.3</a></li>
+                <li><a href="#" onclick="return false;">topic 3.4</a></li>
+                <li><a href="#" onclick="return false;">topic 3.5</a></li>
+            </ul>
+             <ul id="topic4" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 4.1</a></li>
+                <li><a href="#" onclick="return false;">topic 4.2</a></li>
+                <li><a href="#" onclick="return false;">topic 4.3</a></li>
+                <li><a href="#" onclick="return false;">topic 4.4</a></li>
+                <li><a href="#" onclick="return false;">topic 4.5</a></li>
+            </ul>
+             <ul id="topic5" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 5.1</a></li>
+                <li><a href="#" onclick="return false;">topic 5.2</a></li>
+                <li><a href="#" onclick="return false;">topic 5.3</a></li>
+                <li><a href="#" onclick="return false;">topic 5.4</a></li>
+                <li><a href="#" onclick="return false;">topic 5.5</a></li>
+            </ul>
+             <ul id="topic6" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 6.1</a></li>
+                <li><a href="#" onclick="return false;">topic 6.2</a></li>
+                <li><a href="#" onclick="return false;">topic 6.3</a></li>
+                <li><a href="#" onclick="return false;">topic 6.4</a></li>
+                <li><a href="#" onclick="return false;">topic 6.5</a></li>
+            </ul>
+             <ul id="topic7" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 7.1</a></li>
+                <li><a href="#" onclick="return false;">topic 7.2</a></li>
+                <li><a href="#" onclick="return false;">topic 7.3</a></li>
+                <li><a href="#" onclick="return false;">topic 7.4</a></li>
+                <li><a href="#" onclick="return false;">topic 7.5</a></li>
+            </ul>
+             <ul id="topic8" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 8.1</a></li>
+                <li><a href="#" onclick="return false;">topic 8.2</a></li>
+                <li><a href="#" onclick="return false;">topic 8.3</a></li>
+                <li><a href="#" onclick="return false;">topic 8.4</a></li>
+                <li><a href="#" onclick="return false;">topic 8.5</a></li>
+            </ul>
+            <ul id="topic9" class="nav nav-sidebar topic">
+                <li><a href="#" onclick="return false;">topic 9.1</a></li>
+                <li><a href="#" onclick="return false;">topic 9.2</a></li>
+                <li><a href="#" onclick="return false;">topic 9.3</a></li>
+                <li><a href="#" onclick="return false;">topic 9.4</a></li>
+                <li><a href="#" onclick="return false;">topic 9.5</a></li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+<script>
+$(function () {
+    $(".main").on("click", "a", function () {
+        $(".subject").removeClass("active");
+        $($(this).attr("href")).addClass("active");
+        console.log($(".subject ul"));
+    });
+});
+$(function () {
+    $(".subject").on("click", "a", function () {
+        $(".topic").removeClass("active");
+        $($(this).attr("href")).addClass("active");
+        console.log($(".topic ul"));
+    });
+});
+</script>
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+<script>
+	$(document).ready(function(){
+if("#topic 1"){
+    $(".tabcontent").hide();
+}
+else{
+
+        $(".tabcontent").show();
+   
+}
+   
+});
+</script>

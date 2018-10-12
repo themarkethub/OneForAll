@@ -51,15 +51,17 @@
                             </button> 
                       </th>
                     </tr>
-                  
+                   {% block content %}
+                            {% for each project in projects%}
                     <tr>
                         <td>
                             <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </button>    
                         </td>
-
-                        <td colspan="2">Put all controls in neutral position.</td>
+                        {% block content %}
+                            {% for each project in projects%}
+                        <td colspan="2">{{project.name}}</td>
                         <td style="text-align: right;">
                             <button class="btn-view-fund btn btn-default btn-xs" type="button">
                                 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
@@ -69,7 +71,8 @@
                             </button>     
                         </td>
                     </tr>
-                  
+                    {% endfor %}
+                      {% endblock %}
                     <tr>
                         <td>
                             <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
