@@ -1,0 +1,183 @@
+
+<script src="//ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="http://ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script><script src="ace/ext-language_tools.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<html lang="en">
+<head>
+<title>StoryCode</title>
+<!-- add two colum bootstrap -->
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    #texted {
+      position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+    }
+</style>
+
+</head>
+
+<body>
+
+     
+   
+
+ 
+<div class="col-md-6" id="editor">var x = "hello world";
+    function hello() {
+     console.log(x);
+    
+}
+   </div>   
+
+<div class="col-md-6 pull-right align-top" >
+<textarea rows="30" cols="50" id="log" style="top: 0;"><p> 
+<h1>name: {{ cert.name }} </h1>
+<br>
+<br>
+
+
+<br>
+<br>
+<b>id:</b> {{cert.id}}
+<br>
+
+<br>
+<b>num_of_topics:</b> {{cert.num_of_topics}}
+<br>
+
+<br>
+<b>num_of_tasks:</b> {{cert.num_of_tasks}}
+<br>
+
+<br>
+<b>num_of_steps:</b> {{cert.num_of_steps}}
+
+<br>
+<br>
+<h2>image test:</h2><img src="{{cert.image}}" alt="Trulli" width="500" height="333">
+<h2>video test:</h2><iframe width="560" height="315" src="{{cert.video}}" frameborder="0"" ></iframe> 
+<br>
+  
+<br>
+<b>number_of_roles:</b> {{cert.num_of_roles}}
+<br>
+<br>
+<br>
+ <b>description:</b> {{cert.description}}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{{#topic}}
+<h2>Topic: {{this.name}}</h2>
+id: {{this._id}} 
+<br>
+<br>
+
+<b>num_of_Tasks:</b> {{this.num_of_tasks}}
+<br>
+<br>
+
+<b>num_of_steps:</b>{{this.num_of_steps}}
+<br>
+<br>
+
+<b>num_of_images:</b>
+<br>
+
+<br>
+<br>
+       <a href="/production/topics/{{this._id}}/tasks/{{this._id}}/"> Click to see All Tasks</a>
+{{/ topic}}
+</p></textarea>
+
+
+<!-- Text editor -->    
+
+
+<!-- integrate Db Calls And Map to var -->
+
+<!-- pars Var: Map -->
+
+<!-- Create Templete Objects -->
+<script type="application/x-javascript">
+
+tinymce.init({
+    selector:'#log',
+     plugins: "template media image fullscreen",
+        media_live_embeds: true,
+        media_alt_source: false,
+  toolbar: "template media image fullscreen",
+    templates: [
+    { title: 'JavaScript Loop Template', content: "\
+    var i;"+" for (i = 0; i < cars.length; i++){text += cars[i] + 1 ;}" },
+    { title: 'Test template 2', content: 'Test 2' },
+    { title:  '{{cert.name}}', content: '<div class="ytp-cued-thumbnail-overlay-image" style="background-image: url(&quot;https://i.ytimg.com/vi/lCHSRSmFZFU/maxresdefault.jpg&quot;);"></div>'}]
+});
+
+</script>
+<script>
+    tinymce.PluginManager.add('test', function(editor, url) {
+    editor.addButton('test', {
+        text: 'Test',
+        icon: true,
+        onclick: function() {
+            editor.insertContent('This is inserted');
+        }
+    });
+});
+    </script>
+<script>
+   ace.require("ace/ext/language_tools");
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/javascript");
+    editor.setTheme("ace/theme/tomorrow");
+    // enable autocompletion and snippets
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true
+    });
+</script>
+  <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/597b6cd0207ce408a6d34890b5b2826b13450714/demo/demo.js"/>
+
+</body>
+<script>
+Handlebars.registerHelper('if_eq', function(a, b, opts) {
+    if (a == b) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+});
+</script>
+</html>

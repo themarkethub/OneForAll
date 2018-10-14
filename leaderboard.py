@@ -702,6 +702,7 @@ def house1():
     Users=mongo.db.users.find({})
     login_user = mongo.db.users.find_one({'name' : session['username']})
     i = Insightly()
+
     projects = i.read('tasks',id=8110743)
     print projects
 
@@ -719,6 +720,15 @@ def notebooks():
     #print projects
 
     return render_template('notebook.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
+
+@app.route('/storypad/', methods=['GET', 'POST'])
+def storypad():
+    Users=mongo.db.users.find({})
+    login_user = mongo.db.users.find_one({'name' : session['username']})
+    Certs= mongo.db.certifications.find({})
+    #print projects
+
+    return render_template('notebookUI.html',Certs=Certs , Users=Users, login_user=login_user)
 
     
 if __name__ == "__main__":
