@@ -703,7 +703,7 @@ def house1():
     login_user = mongo.db.users.find_one({'name' : session['username']})
     i = Insightly()
 
-    projects = i.read('tasks',id=8110743)
+    projects = i.read('tasks')
     print projects
 
     return render_template('house1.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
