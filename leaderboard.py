@@ -727,8 +727,9 @@ def storypad():
     login_user = mongo.db.users.find_one({'name' : session['username']})
     Certs= mongo.db.certifications.find({})
     #print projects
-
-    return render_template('notebookUI.html',Certs=Certs , Users=Users, login_user=login_user)
+    mongos = mongo.db.UseCases.find()
+    Mongos = mongo.db.UseCases.find()
+    return render_template('notebookUI.html',Mongos=Mongos,mongos=mongos,Certs=Certs , Users=Users, login_user=login_user)
 
     
 if __name__ == "__main__":

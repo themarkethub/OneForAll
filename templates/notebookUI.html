@@ -43,7 +43,7 @@
     
 }
 .container{
-    padding-top: 10%;
+   
     }
 textarea#log {
     width:100%;
@@ -93,21 +93,18 @@ body {
 }
 
 .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 12px;
-    font-size: 36px;
-    margin-left: 15px;
+   
 }
 .main2 {
- 
+    width: 100%;
+    height: 100%;
 }
 .main {
     transition: margin-left .5s;
-    padding: 1px;
+    padding: ;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 100%) {
   .sidenav {padding-top: 1px;}
   .sidenav a {font-size: 18px;}
 }
@@ -123,7 +120,7 @@ body {
 
 .topic {
     float: left;
-  
+    padding-left: 0%;
     max-height: 0;
     overflow: hidden;
     transition: max-width 0s;
@@ -152,6 +149,7 @@ body {font-family: "Lato", sans-serif;}
 /* Style the tab */
 .tab {
     float: left;
+    
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 100%;
@@ -189,7 +187,7 @@ body {font-family: "Lato", sans-serif;}
     float: left;
 
     
-    width: 60%;
+    width: 100%;
     height: 100%;
 }
 </style>
@@ -234,22 +232,44 @@ body {font-family: "Lato", sans-serif;}
 
     
     </div>
-</div>    
 
+</div>    
+<div class="row">
+    <div style="padding-top:50px;padding-left: 50px; position:absolute; z-index: 1001; font-size:30px;cursor:pointer; float:left" onclick="openNav()">&#8702; </div>
+    <br>
+    <div style="padding-top:50px;padding-left: 50px; position:absolute; z-index: 1000; font-size:30px;cursor:pointer; float:right" onclick="closeNav()">&#8701;</div>
+    
+    
+    
+    </div>
              <div id="main2" class="col-md-12">
-            <div class=" sidebar  ">
+            
                   
 <div class="row  " >
    
- <div class="col-md-2">
-                          <ul id="topic1" class="nav nav-sidebar topic tab  col-md-1" >
+ <div class="col-md-2" >
+                          <ul id="topic1" class="nav nav-sidebar topic tab  col-md-6"style="padding-top:19%" >
                         <center><h3>Pages</h3></center>
-                            <button class="tablinks" onclick="openCity(event, 'topic 1')" >topic 1</button>
-                            <button class="tablinks" onclick="openCity(event, 'topic 2')">topic 2</button>
-                            <button class="tablinks" onclick="openCity(event, 'topic 3')">topic 3</button>
+                        <br>
+                        <br>
+                        <br>
+                        {% block content %}
+
+                        {% for mongo in mongos %}
+    
+                          
+                         <button class="tablinks" onclick="openCity(event, 'topic {{mongo.ID}}')" >topic {{mongo.ID}}<br> {{mongo.SUBJECT}}  </button>
+                         
+
+   
+    
+                        {% endfor %}
+     
+                       
+                            
 
                         </ul>
-                      <ul id="topic2" class="nav nav-sidebar topic tab col-md-1">
+                      <ul id="topic2" class="nav nav-sidebar topic tab col-md-6">
                            <center><h3>Pages</h3></center>
                           <button class="tablinks" onclick="openCity(event, 'topic 2_1')" >Topic 2.1</button>
                             <button class="tablinks" onclick="openCity(event, 'topic 2_2')">Topic 2.2</button>
@@ -307,130 +327,157 @@ body {font-family: "Lato", sans-serif;}
                             <li><a href="#" onclick="return false;">topic 9.5</a></li>
                         </ul>
 </div>
- <div class="col-md-10 " style="padding-top: 30px;">
+ <div class="col-md-10 " style="padding-top: 10px;">
                                
+       
+    {% for Mongo in Mongos %}
 
-                                        <div id="topic 1" class="tabcontent ">
-                                          <h3>topic</h3>
-                                          
-                    <div class="container col-lg-12">  
-                        <div class="row">
-                                <div class="container col-sm-12">
+    <div id="topic {{Mongo.ID}}" class="tabcontent ">
+        <h3>{{Mongo.SUBJECT}} </h3>
+        
 
-                                <div class="" id="editor" style="">var x = "hello world";
-  function hello() {
-    console.log(x);
-                                    
-                                }
-
-
-                                   </div> 
-
-                               </div>
-                                <div class="col-sm-12 " style="" >
-                                <textarea rows="400" cols="50" id="log" > 
-                                <h1>name: {} </h1>
-                                <br>
-                                <br>
+<div class="row">
+<div class="container col-sm-6">
+        <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"></script>
+        <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+        <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
+        <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/597b6cd0207ce408a6d34890b5b2826b13450714/demo/demo.js"></script>
+    
+<div class="{{Mongo.ID}}" id="editor" >var x = "hello world";
+function hello() {
+console.log(x);
+  
+}
 
 
-                                <br>
-                                <br>
-                                <b>id:</b> {}
-                                <br>
+ </div> 
 
-                                <br>
-                                <b>num_of_topics:</b> {}
-                                <br>
+</div>
+<div class="col-sm-6 " style="padding-top: 0%" >
+<textarea rows="400" cols="50" id="log{{Mongo.ID}}" > 
+<h1>name: {} </h1>
+<br>
+<br>
 
-                                <br>
-                                <b>num_of_tasks:</b> {}
-                                <br>
 
-                                <br>
-                                <b>num_of_steps:</b> {}
+<br>
+<br>
+<b>id:</b> {}
+<br>
 
-                                <br>
-                                <br>
-                                <h2>image test:</h2><img src="{}" alt="Trulli" width="500" height="333">
-                                <h2>video test:</h2><iframe width="560" height="315" src="{}" frameborder="0"" ></iframe> 
-                                <br>
-                                  
-                                <br>
-                                <b>number_of_roles:</b> {}
-                                <br>
-                                <br>
-                                <br>
-                                 <b>description:</b> {}
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+<br>
+<b>num_of_topics:</b> {}
+<br>
 
-                                {}
-                                <h2>Topic: {}</h2>
-                                id: {} 
-                                <br>
-                                <br>
+<br>
+<b>num_of_tasks:</b> {}
+<br>
 
-                                <b>num_of_Tasks:</b> {}
-                                <br>
-                                <br>
+<br>
+<b>num_of_steps:</b> {}
 
-                                <b>num_of_steps:</b>{}
-                                <br>
-                                <br>
+<br>
+<br>
+<h2>image test:</h2><img src="" alt="Trulli" width="500" height="333">
+<h2>video test:</h2><iframe width="560" height="315" src="" frameborder="0"" ></iframe> 
+<br>
+  
+<br>
+<b>number_of_roles:</b> {}
+<br>
+<br>
+<br>
+ <b>description:</b> {}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-                                <b>num_of_images:</b>
-                                <br>
+{}
+<h2>Topic: {}</h2>
+id: {} 
+<br>
+<br>
 
-                                <br>
-                                <br>
-                                       <a href="/production/topics/{}/tasks/{}/"> Click to see All Tasks</a>
-                                {}
-                                </textarea>
-                                </div>
+<b>num_of_Tasks:</b> {}
+<br>
+<br>
+
+<b>num_of_steps:</b>{}
+<br>
+<br>
+
+<b>num_of_images:</b>
+<br>
+
+<br>
+<br>
+       <a href="/production/topics/{}/tasks/{}/"> Click to see All Tasks</a>
+{}
+</textarea>
+
+
+</div>
+
+                                        
+                               
                             </div>
-                    </div>
+                            
                                         </div>
+                                        <script type="application/x-javascript">
 
-                                        <div id="topic 2" class="tabcontent">
-                                          <h3>topic 2</h3>
-                                          <p> 2</p> 
-                                        </div>
+                                            tinyMCE.init({
+                                                selector:'#log{{Mongo.ID}}',
+                                                height : "100%",
+                                                 plugins: "template media image fullscreen",
+                                                    media_live_embeds: true,
+                                                    media_alt_source: false,
+                                              toolbar: "template media image fullscreen",
+                                                templates: [
+                                                { title: 'JavaScript Loop Template', content: "\
+                                                var i;"+" for (i = 0; i < cars.length; i++){text += cars[i] + 1 ;}" },
+                                                { title: 'Test template 2', content: 'Test 2' },
+                                                { title:  '{}', content: '<div class="ytp-cued-thumbnail-overlay-image" style="background-image: url(&quot;https://i.ytimg.com/vi/lCHSRSmFZFU/maxresdefault.jpg&quot;);"></div>'}]
+                                            });
+                                            
+                                            </script>
+                                            <script>
+                                                tinymce.PluginManager.add('test', function(editor, url) {
+                                                editor.addButton('test', {
+                                                    text: 'Test',
+                                                    icon: true,
+                                                    onclick: function() {
+                                                        editor.insertContent('This is inserted');
+                                                    }
+                                                });
+                                            });
+                                                </script>
+                                               
+                                            <script>
+                                                var editor = ace.edit('editor');
+                                               
+                                                editor.session.setMode("ace/mode/java");
+                                                editor.setTheme("ace/theme/tomorrow");
+                                                // enable autocompletion and snippets
+                                                editor.setOptions({
+                                                    enableBasicAutocompletion: true,
+                                                    enableSnippets: true
+                                                });
+                                            </script>
+                                        {% endfor %}
 
-                                        <div id="topic 3" class="tabcontent">
-                                          <h3>topic 3</h3>
-                                          <p> 3</p>
-                                        </div>
-
-                                        <div id="topic 2_1" class="tabcontent">
-                                          <h3>topic 2.1</h3>
-                                          <p> 1</p>
-                                        </div>
-
-                                        <div id="topic 2_2" class="tabcontent">
-                                          <h3>topic 2.2</h3>
-                                          <p> 2</p> 
-                                        </div>
-
-                                        <div id="topic 2_3" class="tabcontent">
-                                          <h3>topic 2.3</h3>
-                                          <p>topic 2.3 is the capital of Japan.</p>
-                                        </div>
+                                        {% endblock %}
                 
 </div>
                     </div></div>
-</div>
 
-  
-    <div style="top-padding:50px; position:absolute; z-index: 1000; font-size:30px;cursor:pointer" onclick="closeNav()">&#9776;close</div>
-    <div style="padding-top:50px; position:absolute; z-index: 1000; font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</div>
+
+    
 </div>
 </body>
 <script>
@@ -452,27 +499,23 @@ $(function () {
 
 <script>
 function openNav() {
-    document.getElementById("mySidenav").style.width = "300px";
-    document.getElementById("main2").style.marginLeft = "350px";
+    document.getElementById("mySidenav").style.width = "175px";
+    document.getElementById("main2").style.marginLeft = "160px";
     x = "open";
 }
-
+</script>
+<script>
 function closeNav() {
-    if(x = "open"){
+  
   
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main2").style.marginLeft= "0";
   
- }
- else{   
-    
-    var x = "close";
-    
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main2").style.marginLeft= "0";
-}
+
+   
 }
 </script>
+
  <script>
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
@@ -506,50 +549,8 @@ else{
 });
 </script>
 
-<script type="application/x-javascript">
 
-tinyMCE.init({
-    selector:'#log',
-    height : "680",
-     plugins: "template media image fullscreen",
-        media_live_embeds: true,
-        media_alt_source: false,
-  toolbar: "template media image fullscreen",
-    templates: [
-    { title: 'JavaScript Loop Template', content: "\
-    var i;"+" for (i = 0; i < cars.length; i++){text += cars[i] + 1 ;}" },
-    { title: 'Test template 2', content: 'Test 2' },
-    { title:  '{}', content: '<div class="ytp-cued-thumbnail-overlay-image" style="background-image: url(&quot;https://i.ytimg.com/vi/lCHSRSmFZFU/maxresdefault.jpg&quot;);"></div>'}]
-});
-
-</script>
-<script>
-    tinymce.PluginManager.add('test', function(editor, url) {
-    editor.addButton('test', {
-        text: 'Test',
-        icon: true,
-        onclick: function() {
-            editor.insertContent('This is inserted');
-        }
-    });
-});
-    </script>
-<script>
-   ace.require("ace/ext/language_tools");
-    var editor = ace.edit("editor");
-    editor.session.setMode("ace/mode/javascript");
-    editor.setTheme("ace/theme/tomorrow");
-    // enable autocompletion and snippets
-    editor.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true
-    });
-</script>
-  <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/597b6cd0207ce408a6d34890b5b2826b13450714/demo/demo.js"/>
-
+  
 
 
 </div>
