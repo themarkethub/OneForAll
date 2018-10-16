@@ -58,90 +58,154 @@ textarea#log {
 
 <body>
  
-<div class="container">  
+    <div class="col-md-10 " style="padding-top: 10px;">
+                               
+       
+        {% for Mongo in Mongos %}
+    
+        <div id="topic {{Mongo.ID}}" class="tabcontent ">
+            <h3>{{Mongo.SUBJECT}} </h3>
+            
+    
     <div class="row">
-            <div class="container">
-
-            <div class="col-md-6" id="editor">var x = "hello world";
-                function hello() {
-                 console.log(x);
-                
-            }
-
-
-               </div> 
-
-           </div>
-            <div class="col-md-6 pull-right align-top" >
-            <textarea rows="400" cols="50" id="log" > 
-            <h1>name: {} </h1>
-            <br>
-            <br>
-
-
-            <br>
-            <br>
-            <b>id:</b> {}
-            <br>
-
-            <br>
-            <b>num_of_topics:</b> {}
-            <br>
-
-            <br>
-            <b>num_of_tasks:</b> {}
-            <br>
-
-            <br>
-            <b>num_of_steps:</b> {}
-
-            <br>
-            <br>
-            <h2>image test:</h2><img src="{}" alt="Trulli" width="500" height="333">
-            <h2>video test:</h2><iframe width="560" height="315" src="{}" frameborder="0"" ></iframe> 
-            <br>
-              
-            <br>
-            <b>number_of_roles:</b> {}
-            <br>
-            <br>
-            <br>
-             <b>description:</b> {}
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-            {}
-            <h2>Topic: {}</h2>
-            id: {} 
-            <br>
-            <br>
-
-            <b>num_of_Tasks:</b> {}
-            <br>
-            <br>
-
-            <b>num_of_steps:</b>{}
-            <br>
-            <br>
-
-            <b>num_of_images:</b>
-            <br>
-
-            <br>
-            <br>
-                   <a href="/production/topics/{}/tasks/{}/"> Click to see All Tasks</a>
-            {}
-            </textarea>
-            </div>
-        </div>
-</div>
+    <div class="container col-sm-6">
+            <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"></script>
+            <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+            <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
+            <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/597b6cd0207ce408a6d34890b5b2826b13450714/demo/demo.js"></script>
+        
+    <div class="" id="editor" >var x = "hello world";
+    function hello() {
+    console.log(x);
+      
+    }
+    
+    
+     </div> 
+    
+    </div>
+    <div class="col-sm-6 " style="padding-top: 0%" >
+    <textarea rows="400" cols="50" id="log{{Mongo.ID}}" > 
+    <h1>name: {} </h1>
+    <br>
+    <br>
+    
+    
+    <br>
+    <br>
+    <b>id:</b> {}
+    <br>
+    
+    <br>
+    <b>num_of_topics:</b> {}
+    <br>
+    
+    <br>
+    <b>num_of_tasks:</b> {}
+    <br>
+    
+    <br>
+    <b>num_of_steps:</b> {}
+    
+    <br>
+    <br>
+    <h2>image test:</h2><img src="" alt="Trulli" width="500" height="333">
+    <h2>video test:</h2><iframe width="560" height="315" src="" frameborder="0"" ></iframe> 
+    <br>
+      
+    <br>
+    <b>number_of_roles:</b> {}
+    <br>
+    <br>
+    <br>
+     <b>description:</b> {}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    {}
+    <h2>Topic: {}</h2>
+    id: {} 
+    <br>
+    <br>
+    
+    <b>num_of_Tasks:</b> {}
+    <br>
+    <br>
+    
+    <b>num_of_steps:</b>{}
+    <br>
+    <br>
+    
+    <b>num_of_images:</b>
+    <br>
+    
+    <br>
+    <br>
+           <a href="/production/topics/{}/tasks/{}/"> Click to see All Tasks</a>
+    {}
+    </textarea>
+    
+    
+    </div>
+    
+                                            
+                                   
+                                </div>
+                                
+                                            </div>
+                                            <script type="application/x-javascript">
+    
+                                                tinyMCE.init({
+                                                    selector:'#log{{Mongo.ID}}',
+                                                    height : "100%",
+                                                     plugins: "template media image fullscreen",
+                                                        media_live_embeds: true,
+                                                        media_alt_source: false,
+                                                  toolbar: "template media image fullscreen",
+                                                    templates: [
+                                                    { title: 'JavaScript Loop Template', content: "\
+                                                    var i;"+" for (i = 0; i < cars.length; i++){text += cars[i] + 1 ;}" },
+                                                    { title: 'Test template 2', content: 'Test 2' },
+                                                    { title:  '{}', content: '<div class="ytp-cued-thumbnail-overlay-image" style="background-image: url(&quot;https://i.ytimg.com/vi/lCHSRSmFZFU/maxresdefault.jpg&quot;);"></div>'}]
+                                                });
+                                                
+                                                </script>
+                                                <script>
+                                                    tinymce.PluginManager.add('test', function(editor, url) {
+                                                    editor.addButton('test', {
+                                                        text: 'Test',
+                                                        icon: true,
+                                                        onclick: function() {
+                                                            editor.insertContent('This is inserted');
+                                                        }
+                                                    });
+                                                });
+                                                    </script>
+                                                   
+                                                <script>
+                                                    var editor = ace.edit('editor');
+                                                   
+                                                    editor.session.setMode("ace/mode/java");
+                                                    editor.setTheme("ace/theme/tomorrow");
+                                                    // enable autocompletion and snippets
+                                                    editor.setOptions({
+                                                        enableBasicAutocompletion: true,
+                                                        enableSnippets: true
+                                                    });
+                                                </script>
+                                            {% endfor %}
+    
+                                           
+                    
+    </div>
+                        </div></div>
 
 <!-- Text editor -->    
 
@@ -189,11 +253,7 @@ tinymce.init({
         enableSnippets: true
     });
 </script>
-  <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/597b6cd0207ce408a6d34890b5b2826b13450714/demo/demo.js"/>
-
+  
 </body>
 
 </html>
