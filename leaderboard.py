@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from flask import *
 import jsonpickle
 from flask import Flask, render_template, url_for, request, session, redirect
@@ -41,7 +43,8 @@ import os
 
 
 import pprint
-
+import os
+import flask
 from werkzeug.routing import BaseConverter, ValidationError
 from itsdangerous import base64_encode, base64_decode
 from sqlalchemy import create_engine
@@ -61,6 +64,17 @@ import logging
 from transitions import Machine
 import random
 from insightly import Insightly
+
+
+from apiclient import discovery
+from apiclient.http import MediaIoBaseDownload, MediaFileUpload
+from oauth2client import client
+from oauth2client import tools
+from oauth2client.file import Storage
+
+from googleapiclient.discovery import build
+from httplib2 import Http
+from oauth2client import file, client, tools
 
 debug=True
 
@@ -128,15 +142,15 @@ def home():
 @app.route('/api/getleaders')
 def get_leader():
     global leaderboard
-    print "Getting Leaderboard"
-    print leaderboard
+    print ("Getting Leaderboard")
+    print (leaderboard)
     return jsonpickle.encode(leaderboard)
  
 # ADD ENTRY
 @app.route('/api/addentry/',methods=['GET', 'POST'])
 def add_entry():
     global leaderboard,id
-    print "Adding Entry"
+    print ("Adding Entry")
     if request.method == 'POST':
         name = request.form['name']
         score = request.form['score']
@@ -148,7 +162,7 @@ def add_entry():
 @app.route('/api/rmentry/', methods=['DELETE'])
 def rm_entry(entry_id):
     global leaderboard
-    print "Removing Entry!"
+    print ("Removing Entry!")
  
     for entry in leaderboard:
         if entry["id"] == entry_id:
@@ -704,7 +718,7 @@ def house1():
     i = Insightly()
 
     projects = i.read('tasks')
-    print projects
+    print (projects)
 
     return render_template('house1.html', projects=projects, Users=Users, login_user=login_user,videoTask=videoTask, VideoProduct3=VideoProduct3,VideoProduct2=VideoProduct2, VideoProduct=VideoProduct)
 @app.route('/notebooks', methods=['GET', 'POST'])
@@ -731,7 +745,89 @@ def storypad():
     Mongos = mongo.db.UseCases.find()
     return render_template('notebookUI.html',Mongos=Mongos,mongos=mongos,Certs=Certs , Users=Users, login_user=login_user)
 
-    
+@app.route('/kemet', methods=['GET', 'POST'])
+def libery():
+    return flask.redirect(flask.url_for('oauth2callback'))
+    if credentials.access_token_expired:
+        return flask.redirect(flask.url_for('oauth2callback'))
+    else:
+        print('now calling fetch')
+        all_files = fetch("'root' in parents and mimeType = 'application/vnd.google-apps.folder'", sort='modifiedTime desc')
+        s = ""
+        for file in all_files:
+            s += "%s, %s<br>" % (file['name'],file['id'])
+        return s
+@app.route('/kemethome', methods=['GET', 'POST'])
+def liberyHome():
+    SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+    """Shows basic usage of the Drive v3 API.
+    Prints the names and ids of the first 10 files the user has access to.
+    """
+    login_user = mongo.db.users.find_one({'name' : session['username']})
+    store = file.Storage('token.json')
+    creds = store.get()
+    if not creds or creds.invalid:
+        flow = client.flow_from_clientsecrets('client_secret_340055565681-fgp9bmh44cd5e7o2rv5dt1jitt8orrut.apps.googleusercontent.com.json', SCOPES)
+        creds = tools.run_flow(flow, store)
+    service = build('drive', 'v3', http=creds.authorize(Http()))
+
+    # Call the Drive v3 API
+    results = service.files().list(
+        q="mimeType='application/pdf'",pageSize=1000, fields="nextPageToken, files(id, name, parents)").execute()
+    items = results.get('files', [])
+
+    if not items:
+        print('No files found.')
+    else:
+        print('Files:')
+        
+        return render_template('kemet.html', items=items, login_user=login_user)
+@app.route('/oauth2callback')
+def oauth2callback():
+	flow = client.flow_from_clientsecrets('client_secret_340055565681-fgp9bmh44cd5e7o2rv5dt1jitt8orrut.apps.googleusercontent.com.json',
+			scope='https://www.googleapis.com/auth/drive',
+			redirect_uri=flask.url_for('oauth2callback', _external=True)) # access drive api using developer credentials
+	flow.params['include_granted_scopes'] = 'true'
+	if 'code' not in flask.request.args:
+		auth_uri = flow.step1_get_authorize_url()
+		return flask.redirect(auth_uri)
+	else:
+		auth_code = flask.request.args.get('code')
+		credentials = flow.step2_exchange(auth_code)
+		open('credentials.json','w').write(credentials.to_json()) # write access token to credentials.json locally
+		return flask.redirect(flask.url_for('liberyHome'))   
+def download_file(file_id, output_file):
+	credentials = get_credentials()
+	http = credentials.authorize(httplib2.Http())
+	service = discovery.build('drive', 'v3', http=http)
+	#file_id = '0BwwA4oUTeiV1UVNwOHItT0xfa2M'
+	request = service.files().export_media(fileId=file_id,mimeType='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+	#request = service.files().get_media(fileId=file_id)
+	
+	fh = open(output_file,'wb') #io.BytesIO()
+	downloader = MediaIoBaseDownload(fh, request)
+	done = False
+	while done is False:
+		status, done = downloader.next_chunk()
+		#print ("Download %d%%." % int(status.progress() * 100))
+	fh.close()
+	#return fh
+	
+def update_file(file_id, local_file):
+	credentials = get_credentials()
+	http = credentials.authorize(httplib2.Http())
+	service = discovery.build('drive', 'v3', http=http)
+	# First retrieve the file from the API.
+	file = service.files().get(fileId=file_id).execute()
+	# File's new content.
+	media_body = MediaFileUpload(local_file, resumable=True)
+	# Send the request to the API.
+	updated_file = service.files().update(
+        fileId=file_id,
+		#body=file,
+		#newRevision=True,
+		media_body=media_body).execute()
+
 if __name__ == "__main__":
  
     app.debug = True
