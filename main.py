@@ -832,5 +832,5 @@ if __name__ == "__main__":
  
     app.debug = True
     app.secret_key = 'mysecret'
-    app.run(port=5000)    
+    app.run()    
    

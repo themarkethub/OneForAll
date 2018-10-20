@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/c21f5ca7-ef60-4426-8a1d-84893e92cc47/resourceGroups/appsvc_rg_windows_centralus/providers/Microsoft.Web/sites/AllForOne"
+}
